@@ -10,8 +10,9 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # --- PATH --------------------------------------------------------------------
-# Python user bin (pip --user) + pipx
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+# Python user bin (pip --user) — suit la version de python3 installée
+command -v python3 &>/dev/null && export PATH="$(python3 -m site --user-base)/bin:$PATH"
+# pipx
 export PATH="$PATH:$HOME/.local/bin"
 
 # Go
