@@ -4,10 +4,9 @@ Config shell (zsh) pour macOS — déploiement sur nouvelle machine.
 
 ## Contenu
 
-- `.zshrc` — config principale (oh-my-zsh, theme af-magic, PATH, aliases)
+- `.zshrc` — oh-my-zsh (theme af-magic), PATH (Python/Go), aliases, fzf
 - `.zprofile` — homebrew shellenv + OrbStack
-- `.zshenv.local.example` — template pour les secrets (copier en `~/.zshenv.local`)
-- `install.sh` — installe homebrew/omz/fzf et copie les fichiers
+- `install.sh` — installe homebrew/omz/fzf/vim et copie les dotfiles
 
 ## Déploiement
 
@@ -17,14 +16,17 @@ cd shellconfig
 ./install.sh
 ```
 
-Puis éditer `~/.zshenv.local` pour y mettre le token WPScan.
+## Trucs machine-spécifiques et secrets
 
-## Secrets
+`~/.zshrc.local` (gitignored, sourcé par `.zshrc`) — mettre là les secrets et
+aliases locaux. Exemple pour WPScan :
 
-**Jamais de secrets dans ce repo.** Le token API WPScan et tout futur secret
-vivent dans `~/.zshenv.local` (gitignored), sourcé par `.zshrc`.
+```bash
+export WPSCAN_API_TOKEN="..."
+alias wpscan='docker run --rm -it wpscanteam/wpscan --api-token "$WPSCAN_API_TOKEN"'
+```
 
 ## Notes
 
-- conda : réinstaller miniconda puis `conda init zsh` (bloc auto-généré, pas dans ce repo)
+- conda : réinstaller miniconda puis `conda init zsh` si besoin (auto-généré)
 - vim : config séparée → [vimconfig](https://github.com/gobelinor/vimconfig)

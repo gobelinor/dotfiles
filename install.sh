@@ -19,15 +19,14 @@ fi
 command -v fzf &>/dev/null || brew install fzf
 [ -f ~/.fzf.zsh ] || "$(brew --prefix)/opt/fzf/install" --all --no-bash --no-fish
 
+# Vim (version homebrew, cf. alias vim)
+command -v /opt/homebrew/bin/vim &>/dev/null || brew install vim
+
 # Fichiers de config (backup de l'existant)
 for f in .zshrc .zprofile; do
     [ -f "$HOME/$f" ] && cp "$HOME/$f" "$HOME/$f.bak"
     cp "$f" "$HOME/$f"
 done
 
-# Fichier de secrets local
-[ -f ~/.zshenv.local ] || cp .zshenv.local.example ~/.zshenv.local
-
-echo "Fait. Édite ~/.zshenv.local (token WPScan), puis : source ~/.zshrc"
-echo "Optionnel : brew install openjdk@17 postgresql@17 go miniconda docker"
-echo "Android SDK : à installer manuellement dans ~/Tools/Android si pentest mobile"
+echo "Fait. Ouvre un nouveau terminal ou : source ~/.zshrc"
+echo "Pour les trucs machine-spécifiques/secrets : ~/.zshrc.local (sourcé par .zshrc)"
