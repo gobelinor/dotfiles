@@ -22,6 +22,9 @@ command -v fzf &>/dev/null || brew install fzf
 # Vim (version homebrew, cf. alias vim)
 command -v /opt/homebrew/bin/vim &>/dev/null || brew install vim
 
+# iTerm2
+[ -d /Applications/iTerm.app ] || brew install --cask iterm2
+
 # Fichiers de config (backup de l'existant)
 for f in .zshrc .zprofile; do
     [ -f "$HOME/$f" ] && cp "$HOME/$f" "$HOME/$f.bak"
